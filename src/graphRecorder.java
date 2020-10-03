@@ -1,21 +1,23 @@
 
-public class graphRecorder {
-    private int nVertices;
-    private String[] label;
-    private String[] edge1;
-    private String[] edge2;
-    private Float[] grau;
+import java.util.HashMap;
+
+public class graphRecorder { // gravador de grafos
+    private int nVertices; // numero de vertices
+    private HashMap<String, Integer> label; //um relacionamento entre o nome do vertice e seu numero (importante para a criacao da matriz de adjacencia)
+    private String[] edge1; // vertices da esquerda das ligacoes
+    private String[] edge2; // vertices da direita das ligacoes
+    private Float[] grau; // peso das aresta
 
     public graphRecorder() {
         this(0,null,null,null,null);
     }
 
-    public graphRecorder(int nVertices, String[] label, String[] edge1, String[] edge2, Float[] grau) {
-        setnVertices(nVertices);
-        setLabel(label);
-        setEdge1(edge1);
-        setEdge2(edge2);
-        setGrau(grau);
+    public graphRecorder(int nVertices, HashMap<String, Integer> label, String[] edge1, String[] edge2, Float[] grau) {
+        this.nVertices = nVertices;
+        this.label = label;
+        this.edge1 = edge1;
+        this.edge2 = edge2;
+        this.grau = grau;
     }
 
     public int getnVertices() {
@@ -26,11 +28,11 @@ public class graphRecorder {
         this.nVertices = nVertices;
     }
 
-    public String[] getLabel() {
+    public HashMap<String, Integer> getLabel() {
         return label;
     }
 
-    public void setLabel(String[] label) {
+    public void setLabel(HashMap<String, Integer> label) {
         this.label = label;
     }
 

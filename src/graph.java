@@ -1,17 +1,19 @@
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
-public class graph {
+public class graph { // um grafo
     private int nVertices;
-    private String[] labels;
-    Map<String, String> arestas = new HashMap<String, String>(); // hashmap deve ser usado para implementar a matriz de adjacencia
-    Map<Map<String, String>, Float> graus = new HashMap<Map<String, String>, Float>();
+    Map<String, List<String>> adjacencyList = new HashMap<>();
+    float[][] adjacencyMatrix;
+    HashMap<String, Integer> labels;
 
-    public graph(int nVertices, String[] labels, Map<String, String> arestas, Map<Map<String, String>, Float> graus) {
+    public graph(int nVertices, Map<String, List<String>> adjacencyList, float[][] adjacencyMatrix, HashMap<String, Integer> labels) {
         this.nVertices = nVertices;
+        this.adjacencyList = adjacencyList;
+        this.adjacencyMatrix = adjacencyMatrix;
         this.labels = labels;
-        this.arestas = arestas;
-        this.graus = graus;
     }
 
     public int getnVertices() {
@@ -22,27 +24,64 @@ public class graph {
         this.nVertices = nVertices;
     }
 
-    public String[] getLabels() {
+    public Map<String, List<String>> getAdjacencyList() {
+        return adjacencyList;
+    }
+
+    public void setAdjacencyList(Map<String, List<String>> adjacencyList) {
+        this.adjacencyList = adjacencyList;
+    }
+
+    public float[][] getAdjacencyMatrix() {
+        return adjacencyMatrix;
+    }
+
+    public void setAdjacencyMatrix(float[][] adjacencyMatrix) {
+        this.adjacencyMatrix = adjacencyMatrix;
+    }
+
+    public HashMap<String, Integer> getLabels() {
         return labels;
     }
 
-    public void setLabels(String[] labels) {
+    public void setLabels(HashMap<String, Integer> labels) {
         this.labels = labels;
     }
 
-    public Map<String, String> getArestas() {
-        return arestas;
+    public int numArestas(){
+        int acc = 0;
+        for (int i = 0; i < nVertices; i++) {
+            for (int j = 0; j < nVertices; j++) {
+                if(adjacencyMatrix[i][j]>0 && adjacencyMatrix[i][j]<Float.POSITIVE_INFINITY){
+                    acc++;
+                }
+            }
+        }
+        return acc;
+    }
+    public int grau(String x){
+        int degree = adjacencyList.get(x).size();
+        return degree;
     }
 
-    public void setArestas(Map<String, String> arestas) {
-        this.arestas = arestas;
+    public String rotulo(int x){
+        Map<Integer, String> swapped = labels.entrySet().stream().collect(Collectors.toMap(Map.Entry::getValue, Map.Entry::getKey));
+        return swapped.get(x);
     }
 
-    public Map<Map<String, String>, Float> getGraus() {
-        return graus;
+    public List<String> neighbours(String x){
+        return adjacencyList.get(x);
     }
 
-    public void setGraus(Map<Map<String, String>, Float> graus) {
-        this.graus = graus;
+    public boolean arestaExists(String x, String y){
+        if(adjacencyMatrix[labels.get(x)][labels.get(y)]>0 && adjacencyMatrix[labels.get(x)][labels.get(y)]<Float.POSITIVE_INFINITY){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public float weight(String x, String y){
+        return adjacencyMatrix[labels.get(x)][labels.get(y)];
     }
 }
