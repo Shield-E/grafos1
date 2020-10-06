@@ -74,7 +74,7 @@ public class graph { // um grafo
     }
 
     public boolean arestaExists(String x, String y){
-        if(adjacencyMatrix[labels.get(x)][labels.get(y)]>0 && adjacencyMatrix[labels.get(x)][labels.get(y)]<Float.POSITIVE_INFINITY){
+        if(adjacencyMatrix[labels.get(x)-1][labels.get(y)-1]>0 && adjacencyMatrix[labels.get(x)-1][labels.get(y)-1]<Float.POSITIVE_INFINITY){
             return true;
         } else {
             return false;
@@ -82,6 +82,6 @@ public class graph { // um grafo
     }
 
     public float weight(String x, String y){
-        return adjacencyMatrix[labels.get(x)][labels.get(y)];
+        return adjacencyMatrix[labels.get(x)-1][labels.get(y)-1];
     }
 }

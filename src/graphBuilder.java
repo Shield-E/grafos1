@@ -50,9 +50,10 @@ public class graphBuilder {
         }
 
         for (int i = 0; i < recorder.getEdge1().length; i++) { // percorre todas as ligacoes, edge1.lenght == edge2.lenght sempre, pelo padrao do arquivo
-
             if (!adjacencyList.containsKey(edg1[i])) { // se a lista ainda nao contem um vertice com o nome do edg1
                 adjacencyList.put(edg1[i], new LinkedList<>()); // adiciona o edg1 e uma lista para suas adjacencias
+                adjacencyList.get(edg1[i]).add(edg2[i]); // adiciona uma adjacencia a edg1
+                adjacencyMatrix[labels.get(edg1[i])-1][labels.get(edg2[i])-1] = recorder.getGrau()[i]; // adiciona o peso de uma aresta para a matriz de adjacencia na posicao padrao do nome dos vertices provenientes do arquivo
             } else {
                 adjacencyList.get(edg1[i]).add(edg2[i]); // adiciona uma adjacencia a edg1
                 adjacencyMatrix[labels.get(edg1[i])-1][labels.get(edg2[i])-1] = recorder.getGrau()[i]; // adiciona o peso de uma aresta para a matriz de adjacencia na posicao padrao do nome dos vertices provenientes do arquivo
