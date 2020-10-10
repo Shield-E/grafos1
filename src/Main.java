@@ -37,6 +37,9 @@ public class Main {
         System.out.print("peso da aresta c-d: " + meuGrafo.weight("c", "d") + "\n");
         System.out.print("peso da aresta c-a: " + meuGrafo.weight("c", "a") + "\n");
 
+        bellmanFord exec1 = new bellmanFord(meuGrafo, meuGrafo.labels.get("a"));
+        exec1.execute();
+
         leitor.closeFile();
 
     }
