@@ -26,6 +26,10 @@ public class floydWarshall {
         for (int i = 0; i < nvert; i++) {
             System.out.print(i+1 + ": ");
             for (int j = 0; j < nvert; j++) {
+                if (j == nvert-1){
+                    System.out.print(dv[i][j] + ";");
+                    break;
+                }
                 System.out.print(dv[i][j] + ",");
             }
             System.out.print("\n");
