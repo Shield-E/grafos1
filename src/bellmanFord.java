@@ -50,7 +50,7 @@ public class bellmanFord {
         }
 
         for (int i = 0; i < nvert; i++) {
-            System.out.print(g.labels.get(g.rotulo(i)) + ": " + path.get(i) +"; d=" + dv[i] + "\n");
+            System.out.print(i+1 + ":" + path.get(i) +"; d=" + dv[i] + "\n");
         }
 
     }

@@ -40,6 +40,10 @@ public class Main {
         bellmanFord exec1 = new bellmanFord(meuGrafo, meuGrafo.labels.get("a"));
         exec1.execute();
 
+        floydWarshall exec2 = new floydWarshall(meuGrafo);
+        exec2.execute();
+
+
         leitor.closeFile();
 
     }
