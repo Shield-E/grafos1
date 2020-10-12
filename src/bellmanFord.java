@@ -18,7 +18,6 @@ public class bellmanFord {
             dv[i] = Float.POSITIVE_INFINITY;
         }
 
-        List<ArrayList<Integer>> paths = new ArrayList<>();
         dv[vertice-1] = 0;
 
         Map<Integer, LinkedList<Integer>> path = new HashMap<>();
