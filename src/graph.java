@@ -77,7 +77,7 @@ public class graph { // um grafo
                 }
             }
         }
-        return acc;
+        return acc/2;
     }
     public int grau(String x){
         int degree = adjacencyList.get(x).size();

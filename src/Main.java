@@ -38,13 +38,13 @@ public class Main {
         System.out.print("peso da aresta c-a: " + meuGrafo.weight("c", "a") + "\n");
 
         System.out.print("\n");
-/*
+
         System.out.print("executando o algoritimo de bellman-ford para o vertice a:\n");
         bellmanFord exec1 = new bellmanFord(meuGrafo, meuGrafo.labels.get("a"));
         exec1.execute();
 
         System.out.print("\n");
-*/
+
         System.out.print("executando o algoritimo de floyd-warshall para todos os pares de vertices:\n");
         floydWarshall exec2 = new floydWarshall(meuGrafo);
         exec2.execute();
