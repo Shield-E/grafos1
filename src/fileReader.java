@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.io.*;
 
-public class fileReader {
+public class  fileReader {
     private Scanner input;
     public void openFile(){
         try {

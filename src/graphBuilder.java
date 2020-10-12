@@ -58,8 +58,16 @@ public class graphBuilder {
                 adjacencyList.get(edg1[i]).add(edg2[i]); // adiciona uma adjacencia a edg1
                 adjacencyMatrix[labels.get(edg1[i])-1][labels.get(edg2[i])-1] = recorder.getGrau()[i]; // adiciona o peso de uma aresta para a matriz de adjacencia na posicao padrao do nome dos vertices provenientes do arquivo
             }
+            if(!adjacencyList.containsKey(edg2[i])){
+                adjacencyList.put(edg2[i], new LinkedList<>());
+                adjacencyList.get(edg2[i]).add(edg1[i]);
+                adjacencyMatrix[labels.get(edg2[i])-1][labels.get(edg1[i])-1] = recorder.getGrau()[i];
+            } else {
+                adjacencyList.get(edg2[i]).add(edg1[i]);
+                adjacencyMatrix[labels.get(edg2[i])-1][labels.get(edg1[i])-1] = recorder.getGrau()[i];
+            }
         }
-        graph g1 = new graph(vertices, adjacencyList, adjacencyMatrix, labels); //constroi, finalmente, o grafo
+        graph g1 = new graph(vertices, adjacencyList, adjacencyMatrix, labels, edg1, edg2); //constroi, finalmente, o grafo
         return g1;
     }
 }

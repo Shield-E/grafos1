@@ -8,12 +8,16 @@ public class graph { // um grafo
     Map<String, List<String>> adjacencyList = new HashMap<>();
     float[][] adjacencyMatrix;
     HashMap<String, Integer> labels;
+    String[] edgSrc;
+    String[] edgDest;
 
-    public graph(int nVertices, Map<String, List<String>> adjacencyList, float[][] adjacencyMatrix, HashMap<String, Integer> labels) {
+    public graph(int nVertices, Map<String, List<String>> adjacencyList, float[][] adjacencyMatrix, HashMap<String, Integer> labels, String[] edgSrc, String[] edgDest) {
         this.nVertices = nVertices;
         this.adjacencyList = adjacencyList;
         this.adjacencyMatrix = adjacencyMatrix;
         this.labels = labels;
+        this.edgSrc = edgSrc;
+        this.edgDest = edgDest;
     }
 
     public int getnVertices() {
@@ -46,6 +50,22 @@ public class graph { // um grafo
 
     public void setLabels(HashMap<String, Integer> labels) {
         this.labels = labels;
+    }
+
+    public String[] getEdgSrc() {
+        return edgSrc;
+    }
+
+    public void setEdgSrc(String[] edgSrc) {
+        this.edgSrc = edgSrc;
+    }
+
+    public String[] getEdgDest() {
+        return edgDest;
+    }
+
+    public void setEdgDest(String[] edgDest) {
+        this.edgDest = edgDest;
     }
 
     public int numArestas(){

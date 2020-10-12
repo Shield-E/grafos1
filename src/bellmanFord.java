@@ -1,6 +1,4 @@
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
+import java.util.*;
 
 public class bellmanFord {
     private graph g;
@@ -19,26 +17,29 @@ public class bellmanFord {
         for (int i = 0; i < nvert; i++) {
             dv[i] = Float.POSITIVE_INFINITY;
         }
-        Map<Integer, LinkedList<Integer>> path = new HashMap<>();
 
-        dv[vertice] = 0;
+        List<ArrayList<Integer>> paths = new ArrayList<>();
+        dv[vertice-1] = 0;
+
+        Map<Integer, LinkedList<Integer>> path = new HashMap<>();
 
         for (int i = 0; i < nvert; i++) {
             path.put(i, new LinkedList<>());
         }
-        for (int i = 0; i < nvert; i++){
-            for (int j = 0; j < nvert; j++) {
-                for (int k = 0; k < nvert; k++) {
-                    if (adjMatr[j][k] != Float.POSITIVE_INFINITY){
-                        if (dv[k] > dv[j] + adjMatr[j][k]) {
-                            path.get(j).add(k);
-                            dv[k] = dv[j] + adjMatr[j][k];
-                        }
-                    }
+
+        String[] rotu = g.getEdgSrc();
+        String[] rotv = g.getEdgDest();
+        for (int i = 0; i < nvert - 1; i++){
+            for (int j = 0; j < g.numArestas(); j++) {
+                int u = g.getLabels().get(rotu[j])-1;
+                int v = g.getLabels().get(rotv[j])-1;
+                float peso = g.weight(g.rotulo(u+1), g.rotulo(v+1));
+                if(dv[u] != Float.POSITIVE_INFINITY && dv[u] + peso < dv[v]){
+                    dv[v] = dv[u] + peso;
+                    path.get(u).add(v);
                 }
             }
         }
-
         for (int i = 0; i < nvert; i++) {
             for (int j = 0; j < nvert; j++) {
                 if (adjMatr[i][j] != Float.POSITIVE_INFINITY){
